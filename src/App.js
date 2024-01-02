@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './navbar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import LandingPage from './components/LandingPage';
+import Items from './components/Items';
+import Invoices from './components/Invoices';
+import SendEmail from './components/SendEmail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/items" element={<Items />} />
+        <Route path="/invoices" element={<Invoices />} />
+        <Route path="/sendemail" element={<SendEmail />} />
+      </Routes>
+    </Router>
   );
 }
 
